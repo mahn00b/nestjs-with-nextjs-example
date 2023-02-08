@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
-@Controller('quotes')
-export class QuotesController {}
+import { QuotesService, Quote } from './quotes.service';
+@Controller('/')
+export class QuotesController {
+  constructor(private quotesService: QuotesService) {}
+
+  @Get('quotes')
+  public getRandom(): Quote {
+    return this.quotesService.getRandom();
+  }
+}
