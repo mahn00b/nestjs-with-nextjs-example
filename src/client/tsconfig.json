@@ -23,7 +23,10 @@
     "next-env.d.ts",
     "next.config.js",
     "pages/**/*.ts",
-    "pages/**/*.tsx"
+    "pages/**/*.tsx",
+    "components/**/*.tsx",
+    "components/**/*.ts",
+    "../../typings"
   ],
   "exclude": [
     "node_modules"
