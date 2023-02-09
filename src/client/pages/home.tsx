@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NextPage } from 'next';
 import NextHead from 'next/head';
 import Quote from '../components/Quote';
+import { getARandomQuote } from '../data/quotes';
 import styles from '../styles/home.module.css';
 
 const quote = {
@@ -11,24 +12,40 @@ const quote = {
 };
 
 const Home: NextPage = () => {
+  const [currentQuote, setCurrentQuote] = useState<Quote>()
+
+  const handleClick = async () => {
+    const quote = await getARandomQuote();
+
+    setCurrentQuote(quote);
+  }
+
+  useEffect(() => {
+    getARandomQuote()
+      .then((quote) => {
+        setCurrentQuote(quote);
+      })
+  }, [])
+
   return (
     <>
       <NextHead>
         <title>Random Office Quotes</title>
+        <meta name="description" content="An app that provides answers to life's greatest mysteries." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.png" />
       </NextHead>
-      <body className={styles.Home}>
-        <main>
-          <h1>Get a random Office Quote</h1>
-          <section>
-            <Quote quote={quote} />
-            <div className={styles.buttonContainer}>
-              <button className={styles.quoteButton}>
-                Click here to get a random quote
-              </button>
-            </div>
-          </section>
-        </main>
-      </body>
+      <h1 className={styles.title}>Get a Random Office Quote</h1>
+      <main className={styles.Home}>
+        <section>
+          <Quote quote={currentQuote} />
+          <div className={styles.buttonContainer}>
+            <button onClick={handleClick} className={styles.quoteButton}>
+              Click here to get a random quote
+            </button>
+          </div>
+        </section>
+      </main>
     </>
   )
 };

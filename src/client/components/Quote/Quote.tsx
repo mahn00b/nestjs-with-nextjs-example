@@ -1,3 +1,4 @@
+import Loader from '../Loader';
 import styles from './Quote.module.css';
 
 interface QuoteProps {
@@ -6,19 +7,27 @@ interface QuoteProps {
 }
 
 export default function QuoteDisplay({
-  quote: {
-    quote,
-    character
-  }
+  quote,
 }: QuoteProps) {
   return (
     <div className={styles.Quote}>
-      <blockquote cite={character}>
-        {quote}
+      {
+      quote
+        ?
+      (
+      <>
+      <blockquote cite={quote.character}>
+        {quote.quote}
       </blockquote>
       <span>
-        by {character}
+        by {quote.character}
       </span>
+     </>
+      )
+        :
+      (<Loader />)
+      }
+
     </div>
   )
 }

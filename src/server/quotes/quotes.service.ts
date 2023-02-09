@@ -2,12 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-export interface Quote {
-  quote_id: number;
-  quote: string;
-  character: string;
-}
-
 @Injectable()
 export class QuotesService {
   private db: Quote[] = [];

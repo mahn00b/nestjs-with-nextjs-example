@@ -1,12 +1,17 @@
 .Quote {
   max-width: 35rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 2rem;
   letter-spacing: 2px;
 
   background-color: #FFB6C1;
   border-radius: 5px;
-  padding: 1rem;
+  padding: .5rem;
+
+  @media screen and (min-width: 60rem) {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
 }
 
 .Quote > blockquote {
@@ -14,5 +19,9 @@
 }
 
 .Quote > span {
-  font-size: 3rem
+  font-size: 1.5rem;
+
+  @media screen and (min-width: 60rem) {
+    font-size: 3rem;
+  }
 }

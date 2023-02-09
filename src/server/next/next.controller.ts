@@ -12,12 +12,12 @@ export class NextController {
     await this.nextService.handler(req, res);
   }
 
-  @Get('_next*')
+  @Get('*_next*')
   public async assets(@Req() req: Request, @Res() res: Response) {
     await this.nextService.handler(req, res);
   }
 
-  @Get('favicon.ico')
+  @Get('favicon.png')
   public async favicon(@Req() req: Request, @Res() res: Response) {
     await this.nextService.handler(req, res);
   }
